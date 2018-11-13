@@ -6,12 +6,10 @@ function xml2js(xml) {
       var content = xml.match(/^<\/\w+>/);
       var end = xml.match(/^[^<|^>|^/]+/);
       if (start != null && start.length > 0) {
-        tag = start[0];
-        xml = xml.substring(tag.length);
-        obj[tag] = fun();
+        xml = xml.substring(start[0].length);
+        obj[start[0]] = fun();
       } else if (content != null && content.length > 0) {
-        tag = content[0];
-        xml = xml.substring(tag.length);
+        xml = xml.substring(content[0].length);
         break;
       } else if (end != null && end.length > 0) {
         obj = end[0];
